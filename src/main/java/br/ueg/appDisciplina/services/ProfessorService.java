@@ -1,6 +1,7 @@
 package br.ueg.appDisciplina.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,5 +29,10 @@ public class ProfessorService {
 	
 	public void deleteProfessor(Long id) {
 		professorRepository.deleteById(id);
+	}
+	
+	public Professor findById(Long id) {
+		Optional<Professor> optProfessor = professorRepository.findById(id);
+		return optProfessor.get();
 	}
 }

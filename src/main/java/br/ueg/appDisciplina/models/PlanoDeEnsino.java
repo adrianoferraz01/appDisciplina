@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class PlanoDeEnsino {
@@ -21,6 +24,10 @@ public class PlanoDeEnsino {
 	private int cargaHorariaCHT;
 	private int cargaHorariaPBO;
 	private String ementa;
+	
+	@ManyToOne
+	@JsonIgnore
+	private Professor professor;
 	
 	public long getId() {
 		return id;
@@ -88,6 +95,14 @@ public class PlanoDeEnsino {
 	}
 	public void setEmenta(String ementa) {
 		this.ementa = ementa;
+	}
+	
+	
+	public Professor getProfessor() {
+		return professor;
+	}
+	public void setProfessor(Professor professor) {
+		this.professor = professor;
 	}
 	@Override
 	public int hashCode() {

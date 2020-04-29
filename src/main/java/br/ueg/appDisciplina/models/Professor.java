@@ -1,9 +1,12 @@
 package br.ueg.appDisciplina.models;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Professor {
@@ -15,6 +18,20 @@ public class Professor {
 	private String email;
 	private String celular;
 	
+	@OneToMany(mappedBy = "professor")
+	private List<PlanoDeEnsino> planoDeEnsino;
+
+	public Professor() {
+	}
+	
+	public Professor(long id, String nome) {
+		this.id = id;
+		this.nome = nome;
+	}
+
+
+	//Inserir métodos get e set para todos os campos.
+	//Inserir métodos equals e hashCode para id.
 	
 	public long getId() {
 		return id;
@@ -39,6 +56,14 @@ public class Professor {
 	}
 	public void setCelular(String celular) {
 		this.celular = celular;
+	}
+	
+	
+	public List<PlanoDeEnsino> getPlanoDeEnsino() {
+		return planoDeEnsino;
+	}
+	public void setPlanoDeEnsino(List<PlanoDeEnsino> planoDeEnsino) {
+		this.planoDeEnsino = planoDeEnsino;
 	}
 	@Override
 	public int hashCode() {
